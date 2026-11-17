@@ -114,7 +114,7 @@ verifybtn.click()
 
 # agency part
 
-#1 name of agency
+#1 name of agncy
 agencyname = wait.until(ec.visibility_of_element_located((By.NAME, "agency_name")))
 agencyname.send_keys("abcd agency")
 
@@ -160,6 +160,30 @@ driver.find_element(By.CSS_SELECTOR, "button[role='checkbox']").click()
 
 # next 
 driver.find_element(By.XPATH, "//button[contains(text(), 'Next')]").click()
+
+# step 3 completed
+
+# step 4
+#registration number
+
+registration = wait.until(ec.visibility_of_element_located((By.NAME, "business_registration_number")))
+registration.send_keys("1234")
+
+# countries
+driver.find_element(By.CSS_SELECTOR, "button[role='combobox']").click()
+wait.until(ec.element_to_be_clickable((By.XPATH, "//span[text()='Australia']/parent::div"))).click()
+driver.find_element(By.CSS_SELECTOR, "button[role='combobox']").click()
+
+#institution type
+driver.find_element(By.CSS_SELECTOR, "button[role='checkbox']").click()
+
+#upload flie
+filepath = os.path.abspath("test.pdf")
+fileinput = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
+fileinput[0].send_keys(filepath)
+
+#submitt
+driver.find_element(By.XPATH, "//button[contains(text(), 'Submit')]").click()
 
 time.sleep(15)
 driver.quit()
